@@ -19,12 +19,30 @@ import { Card, CardContent } from "@/components/ui/card";
 const whatsapp = "https://wa.me/639177270072";
 
 const experiences = [
-  { title: "Kitesurfing", image: "/kitesurf.jpg" },
-  { title: "Freediving", image: "/freedive.jpg" },
-  { title: "Spearfishing", image: "/spearfishing.jpg" },
-  { title: "Lagoons", image: "/lagoon.jpg" },
-  { title: "Sunrise Sailing", image: "/sunrise.jpg" },
-  { title: "Sunset Anchorages", image: "/sunset.jpg" },
+  {
+    title: "Chase Wind",
+    subtitle: "Kitesurfing • Foiling • Sailing",
+    image: "/kitesurf.jpg",
+    text: "Follow the trade winds across the lagoons of French Polynesia.",
+  },
+  {
+    title: "Go Below The Surface",
+    subtitle: "Freediving • Snorkeling • Manta Rays",
+    image: "/freedive.jpg",
+    text: "Discover coral gardens, crystal water and unforgettable encounters.",
+  },
+  {
+    title: "Live The Islands",
+    subtitle: "Fishing • Pearl Farms • Local Culture",
+    image: "/spearfishing.jpg",
+    text: "Experience Polynesia beyond the guidebooks and resorts.",
+  },
+  {
+    title: "Unplug",
+    subtitle: "Sunsets • Anchorages • Slow Days",
+    image: "/sunset.jpg",
+    text: "Disconnect from schedules and reconnect with the rhythm of the ocean.",
+  },
 ];
 
 const route = [
@@ -93,16 +111,25 @@ ${form.expedition}`;
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-semibold tracking-wide md:flex">
-            <a href="#expedition">Expedition</a>
-            <a href="#route">Route</a>
-            <a href="#boat">Boat</a>
-            <a href="#experiences">Experiences</a>
-            <a href="#inquire">Inquire</a>
-          </nav>
+  <a href="#expedition">Expedition</a>
+  <a href="#route">Journey</a>
+  <a href="#experiences">Experiences</a>
+
+ <a
+  href="https://kaikoa.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-[#12385a]/70 hover:text-[#12385a]"
+>
+  Photography
+</a>
+
+  <a href="#inquire">Inquire</a>
+</nav>
 
           <a href="#inquire">
             <Button className="rounded-full bg-[#12385a] px-5 text-white hover:bg-[#0d2b46]">
-              Reserve
+              Join the Expedition
             </Button>
           </a>
         </div>
@@ -306,39 +333,50 @@ ${form.expedition}`;
 </section>
 
       <section id="boat" className="py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:grid-cols-2">
-          <img
-            src="/boat.jpg"
-            alt="Outremer 45 catamaran"
-            className="aspect-[4/3] rounded-[2rem] object-cover shadow-xl"
-          />
+  <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-[1.1fr_0.9fr]">
+    <div className="rounded-[2rem] bg-[#f7f1e6] p-4 shadow-2xl shadow-[#12385a]/10">
+      <img
+        src="/boat.jpg"
+        alt="Outremer 45 catamaran"
+        className="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
+      />
+    </div>
 
-          <div>
-            <p className="text-sm font-black uppercase tracking-[0.3em]">
-              Aboard Kaikoa
-            </p>
-            <h2 className="mt-4 text-5xl font-black">
-              Outremer 45 performance catamaran.
-            </h2>
+    <div>
+      <p className="text-sm font-black uppercase tracking-[0.3em] text-[#12385a]/55">
+        Aboard Kaikoa
+      </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {[
-                "2 guest cabins",
-                "Small-group format",
-                "Custom itineraries",
-                "Fast, intimate liveaboard",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl bg-white/50 p-5 font-bold"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+      <h2 className="mt-4 text-6xl font-black leading-none md:text-7xl">
+        Outremer
+        <br />
+        45
+      </h2>
+
+      <p className="mt-6 text-2xl leading-9 text-[#12385a]/75">
+        Fast enough to chase the wind.
+        <br />
+        Comfortable enough to slow down.
+      </p>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        {[
+          "2 Guest Cabins",
+          "Small Groups",
+          "Custom Routes",
+          "Liveaboard Format",
+        ].map((item) => (
+          <div
+            key={item}
+            className="rounded-2xl border border-[#12385a]/10 bg-white/50 p-5 font-bold"
+          >
+            {item}
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
       <section id="experiences" className="bg-[#f7f1e6] py-24">
         <div className="mx-auto max-w-7xl px-5">
@@ -349,7 +387,7 @@ ${form.expedition}`;
             Sail · Kitesurf · Freedive · Chill · Explore
           </h2>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
             {experiences.map((item) => (
               <div
                 key={item.title}
@@ -556,7 +594,8 @@ ${form.expedition}`;
       <footer className="border-t border-[#12385a]/10 py-8">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-5 text-sm text-[#12385a]/60 md:flex-row">
           <p>© {new Date().getFullYear()} Kaikoa Expeditions.</p>
-          <p>Raiatea · Huahine · Bora Bora · French Polynesia</p>
+          <p>Move with the wind. Follow the ocean.</p>
+          <p>Photography by Eduardo — Kaikoa.com</p>
         </div>
       </footer>
 

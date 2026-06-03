@@ -12,9 +12,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Kaikoa Expeditions",
-  description: "Expeditions by Kaikoa",
+export const metadata = {
+  title: "Kaikoa Expeditions | French Polynesia 2026",
+  description:
+    "Small-group sailing expeditions through the Society Islands of French Polynesia. Sail, kitesurf, freedive and explore aboard Kaikoa.",
 };
 
 export default function RootLayout({
