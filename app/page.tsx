@@ -406,51 +406,86 @@ ${form.expedition}`;
         </div>
       </section>
 
-      <section id="experiences" className="bg-[#f7f1e6] py-32 md:py-44">
-        <div className="mx-auto max-w-7xl px-5">
-          <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#12385a]/45">
-              Experiences
-            </p>
-            <h2
-              className={`${serif.className} max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.04em] md:text-7xl`}
-            >
-              Travel as exploration, not consumption.
-            </h2>
-          </div>
+      <section id="experiences" className="bg-[#f7f1e6] py-28 md:py-40">
+  <div className="mx-auto max-w-7xl px-5">
+    <div className="grid gap-10 md:grid-cols-[0.75fr_1.25fr] md:items-end">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#12385a]/45">
+          Experiences
+        </p>
 
-          <div className="mt-20 grid gap-8 md:grid-cols-2">
-            {experiences.map((item, index) => (
-              <article
-                key={item.title}
-                className={index % 2 === 1 ? "md:mt-24" : ""}
-              >
-                <div className="group relative aspect-[4/5] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
-                  <div className="absolute bottom-8 left-8 right-8 text-white">
-                    <p className="text-xs uppercase tracking-[0.28em] text-white/65">
-                      {item.subtitle}
-                    </p>
-                    <h3
-                      className={`${serif.className} mt-3 text-5xl font-medium tracking-[-0.04em]`}
-                    >
-                      {item.title}
-                    </h3>
-                  </div>
+        <h2
+          className={`${serif.className} mt-6 text-6xl font-medium leading-[0.9] tracking-[-0.05em] text-[#12385a] md:text-8xl`}
+        >
+          Days shaped
+          <br />
+          by the ocean.
+        </h2>
+      </div>
+
+      <p className="max-w-xl text-xl leading-9 text-[#12385a]/68">
+        Each expedition moves with the conditions: wind, water, light,
+        anchorages and the appetite of the group aboard.
+      </p>
+    </div>
+
+    <div className="mt-16 overflow-x-auto pb-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="flex snap-x snap-mandatory gap-6">
+        {experiences.map((item, index) => (
+          <article
+            key={item.title}
+            className="relative min-w-[88%] snap-center overflow-hidden rounded-[2.5rem] bg-[#071b2c] shadow-2xl shadow-[#12385a]/15 md:min-w-[72%]"
+          >
+            <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-[#071b2c] p-4 md:aspect-[16/8] md:p-6">
+  <img
+    src={item.image}
+    alt={item.title}
+    className="h-full w-full object-contain"
+  />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071b2c]/85 via-[#071b2c]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#071b2c]/50 via-transparent to-transparent" />
+            </div>
+
+            <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-10">
+              <p className="text-xs uppercase tracking-[0.32em] text-white/45">
+                0{index + 1} / 0{experiences.length}
+              </p>
+
+              <div className="mt-5 grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+                <div>
+                  <h3
+                    className={`${serif.className} text-5xl font-medium leading-[0.95] tracking-[-0.04em] md:text-7xl`}
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm uppercase tracking-[0.24em] text-white/55">
+                    {item.subtitle}
+                  </p>
                 </div>
-                <p className="mt-5 max-w-xl text-lg leading-8 text-[#12385a]/66">
+
+                <p className="max-w-xl text-lg leading-8 text-white/72">
                   {item.text}
                 </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="mt-2 flex items-center justify-between border-t border-[#12385a]/12 pt-6">
+      <p className="text-xs uppercase tracking-[0.28em] text-[#12385a]/45">
+        Scroll to explore
+      </p>
+
+      <p className="text-xs uppercase tracking-[0.28em] text-[#12385a]/35">
+        Wind · Water · Islands · Time
+      </p>
+    </div>
+  </div>
+</section>
 
       <section className="py-32 md:py-44">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-[0.85fr_1.15fr] md:gap-24">
