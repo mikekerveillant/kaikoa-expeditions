@@ -1,92 +1,109 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Anchor,
-  Calendar,
-  Compass,
-  Fish,
-  MapPin,
-  MessageCircle,
-  Sailboat,
-  Sparkles,
-  Waves,
-  Wind,
-} from "lucide-react";
+import { Cormorant_Garamond, Inter } from "next/font/google";
+import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+
+const serif = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const sans = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const whatsapp = "https://wa.me/639177270072";
 
 const experiences = [
   {
     title: "Chase Wind",
-    subtitle: "Kitesurfing • Foiling • Sailing",
+    subtitle: "Kitesurfing · Foiling · Sailing",
     image: "/kitesurf.jpg",
-    text: "Follow the trade winds across the lagoons of French Polynesia.",
+    text: "Days shaped by trade winds, lagoon passages and the quiet rush of moving by water.",
   },
   {
-    title: "Go Below The Surface",
-    subtitle: "Freediving • Snorkeling • Manta Rays",
+    title: "Below The Surface",
+    subtitle: "Freediving · Snorkeling · Manta Rays",
     image: "/freedive.jpg",
-    text: "Discover coral gardens, crystal water and unforgettable encounters.",
+    text: "Coral gardens, clear water and encounters that remind you how alive the ocean is.",
   },
   {
-    title: "Live The Islands",
-    subtitle: "Fishing • Pearl Farms • Local Culture",
+    title: "Island Life",
+    subtitle: "Fishing · Pearl Farms · Local Culture",
     image: "/spearfishing.jpg",
-    text: "Experience Polynesia beyond the guidebooks and resorts.",
+    text: "A slower rhythm beyond the resort map, guided by people who know the water intimately.",
   },
   {
     title: "Unplug",
-    subtitle: "Sunsets • Anchorages • Slow Days",
+    subtitle: "Anchorages · Sunsets · Slow Days",
     image: "/sunset.jpg",
-    text: "Disconnect from schedules and reconnect with the rhythm of the ocean.",
+    text: "Space to drift, read, swim, cook, sleep and let the day be decided by the horizon.",
   },
 ];
 
 const route = [
   {
     place: "Raiatea",
-    title: "The journey begins",
-    text: "Step aboard Kaikoa and ease into island rhythm from the sailing heart of French Polynesia.",
+    title: "The sailing heart",
+    text: "Step aboard in the spiritual center of Polynesian voyaging and ease into the rhythm of the islands.",
   },
   {
     place: "Huahine",
-    title: "Wild anchorages and island life",
-    text: "Quiet lagoons, local charm, snorkeling, fishing, and slow evenings away from the crowds.",
+    title: "Wild anchorages",
+    text: "Quiet lagoons, local charm, snorkeling, fishing and evenings away from the expected route.",
   },
   {
     place: "Bora Bora",
-    title: "Turquoise lagoons and iconic peaks",
-    text: "Sail into one of the most legendary lagoons in the world, with space to explore it your way.",
+    title: "The iconic lagoon",
+    text: "Enter one of the world’s most legendary waters, then discover the quieter edges beyond the postcard.",
   },
   {
     place: "Beyond",
-    title: "Wind, weather and possibility",
-    text: "Custom anchorages, kite spots, manta experiences, pearl farms, and detours shaped by the ocean.",
+    title: "Weather and possibility",
+    text: "Kite spots, manta encounters, pearl farms and detours shaped by wind, ocean and curiosity.",
+  },
+];
+
+const months = [
+  {
+    month: "July",
+    status: "Opening Trips",
+    text: "Early-season sailing, lagoon exploration and custom liveaboard itineraries.",
+  },
+  {
+    month: "August",
+    status: "Peak Wind",
+    text: "The strongest window for kitesurfing, foiling and high-energy ocean days.",
+  },
+  {
+    month: "September",
+    status: "Final Departures",
+    text: "A quieter month for slower routes, snorkeling, island time and intimate expeditions.",
   },
 ];
 
 export default function KaikoaExpeditions() {
   const [form, setForm] = useState({
-  name: "",
-  dates: "",
-  guests: "",
-  expedition: "",
-});
-  const [selectedMonth, setSelectedMonth] = useState("");
-const selectMonth = (month: string) => {
-  setSelectedMonth(month);
-  setForm({
-    ...form,
-    dates: `${month} 2026`,
+    name: "",
+    dates: "",
+    guests: "",
+    expedition: "",
   });
+  const [selectedMonth, setSelectedMonth] = useState("");
 
-  document
-    .getElementById("inquire")
-    ?.scrollIntoView({ behavior: "smooth" });
-};
+  const selectMonth = (month: string) => {
+    setSelectedMonth(month);
+    setForm({
+      ...form,
+      dates: `${month} 2026`,
+    });
+
+    document.getElementById("inquire")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -103,483 +120,495 @@ ${form.expedition}`;
   }
 
   return (
-    <main className="min-h-screen bg-[#eee6d7] text-[#12385a]">
-      <header className="fixed top-0 z-50 w-full border-b border-[#12385a]/10 bg-[#eee6d7]/85 backdrop-blur">
+    <main
+      className={`${sans.className} min-h-screen bg-[#eee6d7] text-[#12385a] antialiased`}
+    >
+      <header className="fixed top-0 z-50 w-full border-b border-[#12385a]/10 bg-[#eee6d7]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#top" className="flex items-center gap-3">
             <img src="/kaikoa-logo.png" alt="Kaikoa" className="h-10 w-auto" />
           </a>
 
-          <nav className="hidden items-center gap-7 text-sm font-semibold tracking-wide md:flex">
-  <a href="#expedition">Expedition</a>
-  <a href="#route">Journey</a>
-  <a href="#experiences">Experiences</a>
+          <nav className="hidden items-center gap-8 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#12385a]/70 md:flex">
+            <a className="transition hover:text-[#12385a]" href="#expedition">
+              Expedition
+            </a>
+            <a className="transition hover:text-[#12385a]" href="#route">
+              Journey
+            </a>
+            <a className="transition hover:text-[#12385a]" href="#experiences">
+              Experiences
+            </a>
+            <a
+              href="https://kaikoa.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-[#12385a]"
+            >
+              Photography
+            </a>
+            <a className="transition hover:text-[#12385a]" href="#inquire">
+              Inquire
+            </a>
+          </nav>
 
- <a
-  href="https://kaikoa.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-[#12385a]/70 hover:text-[#12385a]"
->
-  Photography
-</a>
-
-  <a href="#inquire">Inquire</a>
-</nav>
-
-          <a href="#inquire">
-            <Button className="rounded-full bg-[#12385a] px-5 text-white hover:bg-[#0d2b46]">
-              Join the Expedition
+          <a href="#inquire" className="hidden sm:block">
+            <Button className="rounded-full bg-[#12385a] px-6 text-xs uppercase tracking-[0.18em] text-white hover:bg-[#0d2b46]">
+              Inquire
             </Button>
           </a>
         </div>
       </header>
 
-      <section
-        id="top"
-        className="relative grid min-h-screen items-center overflow-hidden px-5 pt-28"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(18,56,90,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(18,56,90,0.10),transparent_40%)]" />
+      <section id="top" className="relative min-h-screen overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+  <div className="absolute right-0 top-1/2 -translate-y-1/2 pr-12">
+    <img
+      src="/mermaid-poster.jpg"
+      alt="Kaikoa French Polynesia expedition"
+      className="h-[80vh] w-auto opacity-40"
+    />
+  </div>
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
-          <div>
-           
-            <h1 className="text-5xl font-black tracking-[0.08em] md:text-7xl">
-  KAIKOA
-  <br />
-  EXPEDITIONS
-</h1>
+  <div className="absolute inset-0 bg-gradient-to-r from-[#071b2c]/92 via-[#071b2c]/70 to-[#071b2c]/45" />
+</div>
 
-<p className="mt-4 text-xl tracking-[0.25em] md:text-2xl">
-  FRENCH POLYNESIA 2026
-</p>
+        <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-end px-5 pb-20 pt-32 md:pb-28">
+          <p className="text-xs font-semibold uppercase tracking-[0.38em] text-white/65">
+            French Polynesia · July — September 2026
+          </p>
 
-<p className="mt-3 text-lg uppercase tracking-[0.35em] text-[#12385a]/50">
-  Raiatea · Huahine · Bora Bora
-</p>
+          <h1
+            className={`${serif.className} mt-7 max-w-5xl text-6xl font-medium leading-[0.86] tracking-[-0.05em] text-white md:text-8xl lg:text-9xl`}
+          >
+            Beyond the
+            <br />
+            charted route.
+          </h1>
 
-            <p className="mt-8 max-w-xl text-xl leading-9 text-[#12385a]/75">
-  Small-group sailing expeditions through French Polynesia.
-  <br />
-  Sail. Kitesurf. Freedive. Explore.
-</p>
-            <p className="mt-8 text-sm uppercase tracking-[0.35em] text-[#12385a]/70">
-  Opening Season · July — September 2026
-</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a href="#inquire">
-                <Button
-                  size="lg"
-                  className="rounded-full bg-[#12385a] px-8 text-white hover:bg-[#0d2b46]"
-                >
-                  Start the Conversation
-                </Button>
-              </a>
+          <div className="mt-10 grid max-w-4xl gap-8 border-t border-white/25 pt-8 md:grid-cols-[1.1fr_0.9fr]">
+            <p className="text-xl leading-9 text-white/82 md:text-2xl md:leading-10">
+              Small-group sailing expeditions through Raiatea, Huahine, Bora
+              Bora and the wild edges between.
+            </p>
 
-              <a href="#expedition">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full border-[#12385a] px-8 text-[#12385a] hover:bg-[#12385a] hover:text-white"
-                >
-                  View Expedition
-                </Button>
-              </a>
+            <div>
+              <p className="text-sm uppercase tracking-[0.28em] text-white/55">
+                Sail · Kitesurf · Freedive · Explore
+              </p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a href="#inquire">
+                  <Button
+                    size="lg"
+                    className="rounded-full bg-white px-8 text-[#12385a] hover:bg-white/90"
+                  >
+                    Start the Conversation
+                  </Button>
+                </a>
+                <a href="#expedition">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full border-white/55 bg-transparent px-8 text-white hover:bg-white hover:text-[#12385a]"
+                  >
+                    View Expedition
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
-<div className="mx-auto max-w-lg rounded-[2rem] bg-[#f7f1e6] p-4 shadow-2xl shadow-[#12385a]/10">
-            <img
-              src="/mermaid-poster.jpg"
-              alt="Kaikoa Polynesia 2026 artwork"
-              className="rounded-[1.5rem] object-cover"
-            />
-          </div>
         </div>
       </section>
 
-      <section id="expedition" className="py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-20 px-5 md:grid-cols-[0.9fr_1.1fr]">
-          <div>
-        <p className="text-6xl font-black leading-none md:text-7xl">
-  The Expedition
-</p>
-
-<h2 className="mt-4 text-xl uppercase tracking-[0.25em] text-[#12385a]/50">
-  This is not mass tourism.
-</h2>
-
-<p className="mt-8 text-lg leading-9 text-[#12385a]/75">
-  A different way to experience Polynesia.
-</p>
-            <p className="mt-6 text-lg leading-9 text-[#12385a]/75">
-  Built around exploration, freedom, ocean energy and island life —
-  at your own rhythm and tailored to your style.
-</p>
-
-<p className="mt-6 text-lg leading-9 text-[#12385a]/75">
-  For some it's all about kitesurfing, foiling and chasing wind.
-  For others it's slowing down, snorkeling crystal lagoons,
-  beach grills at sunset, fishing while cruising between islands,
-  or simply disconnecting and enjoying the beauty of Polynesia.
-</p>
-
-<p className="mt-6 text-lg leading-9 text-[#12385a]/75">
-  Anything from pearl farm visits to manta ray encounters and
-  diving with certified local centers can be arranged.
-</p>
-<div className="mt-8 flex flex-wrap gap-3">
-  {[
-    "Kitesurf & Foil",
-    "Dive & Snorkel",
-    "Island Exploration",
-    "Fishing",
-    "Manta Rays",
-    "Pearl Farms",
-  ].map((item) => (
-    <div
-      key={item}
-      className="rounded-full border border-[#12385a]/15 bg-white/50 px-4 py-2 text-sm font-semibold"
-    >
-      {item}
-    </div>
-  ))}
-</div>
-          </div>
-
-         <img
-  src="/whale.jpg"
-  alt="French Polynesia lagoon"
-  className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-2xl shadow-[#12385a]/20"
-/>
-        </div>
-      </section>
-<section className="relative overflow-hidden bg-[#f7f1e6] py-28">
-  <div className="absolute inset-0 opacity-10">
-    <img
-      src="/surf.jpg"
-      alt=""
-      className="h-full w-full object-cover"
-    />
-  </div>
-
-  <div className="relative mx-auto max-w-5xl px-5 text-center">
-    <p className="text-sm font-black uppercase tracking-[0.35em] text-[#12385a]/50">
-      Eduardo’s Invitation
-    </p>
-
-    <blockquote className="mt-8 text-4xl font-black leading-tight text-[#12385a] md:text-6xl">
-      “The ocean has always been home. Kaikoa Expeditions is an invitation to
-      experience Polynesia the way I love it — under sail, in the water, and far
-      from the crowds.”
-    </blockquote>
-
-    <p className="mt-8 text-lg font-semibold tracking-[0.25em] text-[#12385a]/60">
-      EDUARDO · KAIKOA
-    </p>
-  </div>
-</section>
-<div className="mx-auto max-w-7xl px-5">
-  <div className="h-px bg-[#12385a]/10" />
-</div>
-      <section
-  id="route"
-  className="relative overflow-hidden py-32 text-white"
->
-  <div className="absolute inset-0">
-    <img
-      src="/lagoon.jpg"
-      alt="French Polynesia lagoon"
-      className="h-full w-full object-cover"
-    />
-    <div className="absolute inset-0 bg-[#12385a]/75" />
-  </div>
-
-  <div className="relative mx-auto max-w-7xl px-5">
-    <p className="text-sm font-black uppercase tracking-[0.3em] text-white/60">
-      Route
-    </p>
-
-    <h2 className="mt-4 text-6xl font-black leading-none md:text-7xl">
-      The Journey
-    </h2>
-
-    <p className="mt-5 max-w-2xl text-lg text-white/70">
-      No fixed schedule. No rush. Just islands, wind, and possibility.
-    </p>
-
-    <div className="mt-14 grid gap-5 md:grid-cols-4">
-      {route.map((stop, index) => (
-        <div
-          key={stop.place}
-          className="rounded-[2rem] border border-white/15 bg-white/10 p-6 backdrop-blur"
-        >
-          <p className="text-sm uppercase tracking-[0.25em] text-white/45">
-            Stop {index + 1}
-          </p>
-
-          <h3 className="mt-4 text-3xl font-black">{stop.place}</h3>
-
-          <p className="mt-4 text-lg font-semibold text-white/90">
-            {stop.title}
-          </p>
-
-          <p className="mt-4 text-sm leading-6 text-white/65">
-            {stop.text}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-      <section id="boat" className="py-24">
-  <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-[1.1fr_0.9fr]">
-    <div className="rounded-[2rem] bg-[#f7f1e6] p-4 shadow-2xl shadow-[#12385a]/10">
-      <img
-        src="/boat.jpg"
-        alt="Outremer 45 catamaran"
-        className="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
-      />
-    </div>
-
-    <div>
-      <p className="text-sm font-black uppercase tracking-[0.3em] text-[#12385a]/55">
-        Aboard Kaikoa
-      </p>
-
-      <h2 className="mt-4 text-6xl font-black leading-none md:text-7xl">
-        Outremer
-        <br />
-        45
-      </h2>
-
-      <p className="mt-6 text-2xl leading-9 text-[#12385a]/75">
-        Fast enough to chase the wind.
-        <br />
-        Comfortable enough to slow down.
-      </p>
-
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        {[
-          "2 Guest Cabins",
-          "Small Groups",
-          "Custom Routes",
-          "Liveaboard Format",
-        ].map((item) => (
-          <div
-            key={item}
-            className="rounded-2xl border border-[#12385a]/10 bg-white/50 p-5 font-bold"
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section id="experiences" className="bg-[#f7f1e6] py-24">
+      <section id="expedition" className="py-32 md:py-44">
         <div className="mx-auto max-w-7xl px-5">
-          <p className="text-sm font-black uppercase tracking-[0.3em]">
-            Experiences
-          </p>
-          <h2 className="mt-4 text-5xl font-black">
-            Sail · Kitesurf · Freedive · Chill · Explore
-          </h2>
+          <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr] md:gap-24">
+            <div className="md:pt-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#12385a]/45">
+                The Expedition
+              </p>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {experiences.map((item) => (
-              <div
-                key={item.title}
-                className="group relative aspect-[4/5] overflow-hidden rounded-[2rem]"
+              <h2
+                className={`${serif.className} mt-6 text-5xl font-medium leading-[0.95] tracking-[-0.04em] md:text-7xl`}
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <p className="absolute bottom-6 left-6 text-2xl font-black text-white">
-                  {item.title}
-                </p>
+                Journeys for those who seek more than destinations.
+              </h2>
+            </div>
+
+            <div className="max-w-2xl">
+              <p className="text-2xl leading-10 text-[#12385a]/75">
+                Kaikoa is a different way to experience Polynesia — built
+                around exploration, freedom, ocean energy and island life.
+              </p>
+
+              <p className="mt-8 text-lg leading-9 text-[#12385a]/68">
+                For some, the journey is kitesurfing, foiling and chasing
+                wind. For others, it is slowing down into crystal lagoons,
+                beach grills at sunset, fishing between islands or simply
+                disconnecting from the noise of land.
+              </p>
+
+              <p className="mt-8 text-lg leading-9 text-[#12385a]/68">
+                Pearl farm visits, manta ray encounters and diving with
+                certified local centers can be arranged. The route remains
+                flexible because the best days are often shaped by weather,
+                tide and curiosity.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-24 grid gap-6 md:grid-cols-[1.25fr_0.75fr]">
+            <img
+              src="/whale.jpg"
+              alt="French Polynesia ocean wildlife"
+              className="h-[70vh] min-h-[520px] w-full object-cover"
+            />
+            <div className="flex flex-col justify-between gap-10 bg-[#f7f1e6] p-8 md:p-10">
+              <p
+                className={`${serif.className} text-4xl font-medium leading-tight tracking-[-0.03em] md:text-5xl`}
+              >
+                Expeditions shaped by wind, ocean and curiosity.
+              </p>
+
+              <div className="space-y-4 text-sm uppercase tracking-[0.24em] text-[#12385a]/55">
+                <p>Kitesurf & Foil</p>
+                <p>Dive & Snorkel</p>
+                <p>Island Exploration</p>
+                <p>Fishing</p>
+                <p>Manta Rays</p>
+                <p>Pearl Farms</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-[#f7f1e6] py-36 md:py-48">
+        <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-7xl bg-[#12385a]/10" />
+
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#12385a]/45">
+              Eduardo’s Invitation
+            </p>
+            <p className="mt-8 text-lg leading-8 text-[#12385a]/65">
+              The host’s perspective gives the expedition its character:
+              personal, ocean-led and far from the packaged route.
+            </p>
+          </div>
+
+          <blockquote
+            className={`${serif.className} text-5xl font-medium leading-[1.03] tracking-[-0.04em] md:text-7xl`}
+          >
+            “The ocean has always been home. Kaikoa is an invitation to
+            experience Polynesia under sail, in the water and far from the
+            crowds.”
+            <span className="mt-8 block text-sm font-semibold uppercase tracking-[0.3em] text-[#12385a]/45">
+              Eduardo · Kaikoa
+            </span>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="route" className="relative overflow-hidden py-36 text-white md:py-48">
+        <div className="absolute inset-0">
+          <img
+            src="/lagoon.jpg"
+            alt="French Polynesia lagoon"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[#071b2c]/72" />
+        </div>
+
+        <div className="relative mx-auto max-w-7xl px-5">
+          <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/50">
+                The Journey
+              </p>
+
+              <h2
+                className={`${serif.className} mt-6 text-6xl font-medium leading-[0.92] tracking-[-0.05em] md:text-8xl`}
+              >
+                No fixed script.
+                <br />
+                No rush.
+              </h2>
+            </div>
+
+            <div>
+              <p className="max-w-2xl text-xl leading-9 text-white/72">
+                The Society Islands offer a route, not a schedule. Each
+                departure follows the conditions: wind, swell, anchorages,
+                lagoon clarity and the appetite of the group aboard.
+              </p>
+
+              <div className="mt-16 divide-y divide-white/18 border-y border-white/18">
+                {route.map((stop, index) => (
+                  <div
+                    key={stop.place}
+                    className="grid gap-6 py-8 md:grid-cols-[0.25fr_0.75fr]"
+                  >
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+                      0{index + 1}
+                    </p>
+                    <div>
+                      <h3
+                        className={`${serif.className} text-4xl font-medium tracking-[-0.03em]`}
+                      >
+                        {stop.place}
+                      </h3>
+                      <p className="mt-3 text-lg text-white/88">{stop.title}</p>
+                      <p className="mt-4 max-w-xl text-sm leading-7 text-white/60">
+                        {stop.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="boat" className="py-32 md:py-44">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-[1.15fr_0.85fr] md:gap-24">
+          <img
+            src="/boat.jpg"
+            alt="Outremer 45 catamaran"
+            className="aspect-[5/4] w-full object-cover"
+          />
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#12385a]/45">
+              Aboard Kaikoa
+            </p>
+
+            <h2
+              className={`${serif.className} mt-6 text-6xl font-medium leading-[0.92] tracking-[-0.05em] md:text-8xl`}
+            >
+              Outremer
+              <br />
+              45
+            </h2>
+
+            <p className="mt-8 text-2xl leading-10 text-[#12385a]/72">
+              Fast enough to chase the wind. Comfortable enough to slow down.
+            </p>
+
+            <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-[#12385a]/15 pt-8 text-sm uppercase tracking-[0.22em] text-[#12385a]/55">
+              <p>2 Guest Cabins</p>
+              <p>Small Groups</p>
+              <p>Custom Routes</p>
+              <p>Liveaboard Format</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experiences" className="bg-[#f7f1e6] py-32 md:py-44">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr]">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#12385a]/45">
+              Experiences
+            </p>
+            <h2
+              className={`${serif.className} max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.04em] md:text-7xl`}
+            >
+              Travel as exploration, not consumption.
+            </h2>
+          </div>
+
+          <div className="mt-20 grid gap-8 md:grid-cols-2">
+            {experiences.map((item, index) => (
+              <article
+                key={item.title}
+                className={index % 2 === 1 ? "md:mt-24" : ""}
+              >
+                <div className="group relative aspect-[4/5] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+                  <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <p className="text-xs uppercase tracking-[0.28em] text-white/65">
+                      {item.subtitle}
+                    </p>
+                    <h3
+                      className={`${serif.className} mt-3 text-5xl font-medium tracking-[-0.04em]`}
+                    >
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+                <p className="mt-5 max-w-xl text-lg leading-8 text-[#12385a]/66">
+                  {item.text}
+                </p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24">
-  <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:grid-cols-2">
-    <div>
-      <p className="text-sm font-black uppercase tracking-[0.3em] text-[#12385a]/55">
-        Your Host
-      </p>
+      <section className="py-32 md:py-44">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 md:grid-cols-[0.85fr_1.15fr] md:gap-24">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#12385a]/45">
+              Your Host
+            </p>
 
-      <h2 className="mt-4 text-6xl font-black leading-none md:text-7xl">
-        Meet
-        <br />
-        Eduardo
-      </h2>
-
-      <p className="mt-8 text-xl leading-9 text-[#12385a]/75">
-        Sailor, waterman, photographer and ocean explorer. Eduardo’s life has
-        always moved around the sea — sailing, diving, surfing, spearfishing,
-        travel and photography.
-      </p>
-
-      <p className="mt-6 text-lg leading-8 text-[#12385a]/70">
-        Kaikoa Expeditions brings that world together into a more personal way
-        to experience French Polynesia: small groups, real ocean energy, and
-        days shaped by wind, weather and curiosity.
-      </p>
-
-      <div className="mt-8 flex flex-wrap gap-3">
-        {["Sailing", "Photography", "Freediving", "Kitesurfing", "Island Life"].map(
-          (item) => (
-            <span
-              key={item}
-              className="rounded-full border border-[#12385a]/15 bg-white/50 px-4 py-2 text-sm font-semibold"
+            <h2
+              className={`${serif.className} mt-6 text-6xl font-medium leading-[0.92] tracking-[-0.05em] md:text-8xl`}
             >
-              {item}
-            </span>
-          )
-        )}
-      </div>
-    </div>
+              Meet
+              <br />
+              Eduardo.
+            </h2>
 
-    <div className="rounded-[2rem] bg-[#f7f1e6] p-4 shadow-2xl shadow-[#12385a]/10">
-      <img
-        src="/eduardo.jpg"
-        alt="Eduardo from Kaikoa"
-        className="aspect-[4/5] w-full rounded-[1.5rem] object-cover"
-      />
-    </div>
-  </div>
-</section>
-
-      <section id="season" className="bg-[#12385a] py-28 text-white">
-  <div className="mx-auto max-w-7xl px-5">
-    <div className="grid gap-12 md:grid-cols-[0.9fr_1.1fr]">
-      <div>
-        <p className="text-sm font-black uppercase tracking-[0.3em] text-white/60">
-          Opening Season
-        </p>
-
-        <h2 className="mt-4 text-6xl font-black leading-none md:text-7xl">
-          July —
-          <br />
-          September
-          <br />
-          2026
-        </h2>
-
-        <p className="mt-6 max-w-md text-lg leading-8 text-white/65">
-          A limited number of small-group expeditions through the Society
-          Islands. Each journey is shaped by wind, weather, and the group
-          aboard.
-        </p>
-      </div>
-
-      <div className="grid gap-5 md:grid-cols-3">
-        {[
-          {
-            month: "July",
-            status: "Opening Trips",
-            text: "Ideal for early-season sailing, lagoon exploration, and custom liveaboard itineraries.",
-          },
-          {
-            month: "August",
-            status: "Peak Season",
-            text: "Best window for kitesurfing, foiling, trade winds, and high-energy ocean days.",
-          },
-          {
-            month: "September",
-            status: "Final Trips",
-            text: "A quieter month for slower routes, snorkeling, island time, and intimate expeditions.",
-          },
-        ].map((item) => (
-          <div
-  key={item.month}
-  className={`rounded-[2rem] border p-6 ${
-    selectedMonth === item.month
-      ? "border-white bg-white/15"
-      : "border-white/10 bg-white/5"
-  }`}
->
-            <p className="text-sm uppercase tracking-[0.25em] text-white/45">
-              2026
+            <p className="mt-8 text-xl leading-9 text-[#12385a]/72">
+              Sailor, waterman, photographer and ocean explorer. Eduardo’s life
+              has always moved around the sea — sailing, diving, surfing,
+              spearfishing, travel and photography.
             </p>
 
-            <h3 className="mt-4 text-4xl font-black">{item.month}</h3>
-
-            <p className="mt-4 font-semibold text-white/90">
-              {item.status}
+            <p className="mt-7 text-lg leading-9 text-[#12385a]/66">
+              Kaikoa brings that world together into a more personal way to
+              experience French Polynesia: small groups, real ocean energy and
+              days shaped by wind, weather and curiosity.
             </p>
-
-            <p className="mt-4 text-sm leading-6 text-white/60">
-              {item.text}
-            </p>
-
-           <Button
-  onClick={() => selectMonth(item.month)}
-  className="mt-6 rounded-full bg-white px-5 text-[#12385a] hover:bg-white/90"
->
-  Reserve {item.month}
-</Button>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
 
-      <section id="inquire" className="py-24">
-        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-[#12385a]/10 md:grid-cols-2">
-          <div className="bg-[#12385a] p-8 text-white md:p-12">
-            <p className="text-sm font-black uppercase tracking-[0.3em] text-white/60">
+          <img
+            src="/eduardo.jpg"
+            alt="Eduardo from Kaikoa"
+            className="aspect-[4/5] w-full object-cover"
+          />
+        </div>
+      </section>
+
+      <section id="season" className="bg-[#12385a] py-32 text-white md:py-44">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="grid gap-16 md:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
+                Opening Season
+              </p>
+
+              <h2
+                className={`${serif.className} mt-6 text-6xl font-medium leading-[0.92] tracking-[-0.05em] md:text-8xl`}
+              >
+                July —
+                <br />
+                September
+                <br />
+                2026
+              </h2>
+
+              <p className="mt-8 max-w-md text-lg leading-8 text-white/64">
+                A limited number of small-group expeditions through the Society
+                Islands. Each journey is shaped by wind, weather and the group
+                aboard.
+              </p>
+            </div>
+
+            <div className="divide-y divide-white/15 border-y border-white/15">
+              {months.map((item) => (
+                <div
+                  key={item.month}
+                  className={`grid gap-6 py-8 md:grid-cols-[0.35fr_0.65fr] ${
+                    selectedMonth === item.month ? "bg-white/[0.04]" : ""
+                  }`}
+                >
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+                      2026
+                    </p>
+                    <h3
+                      className={`${serif.className} mt-3 text-5xl font-medium tracking-[-0.04em]`}
+                    >
+                      {item.month}
+                    </h3>
+                  </div>
+
+                  <div>
+                    <p className="text-lg text-white/88">{item.status}</p>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-white/60">
+                      {item.text}
+                    </p>
+
+                    <Button
+                      onClick={() => selectMonth(item.month)}
+                      className="mt-6 rounded-full bg-white px-6 text-[#12385a] hover:bg-white/90"
+                    >
+                      Reserve {item.month}
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="inquire" className="py-32 md:py-44">
+        <div className="mx-auto grid max-w-7xl overflow-hidden bg-white shadow-2xl shadow-[#12385a]/10 md:grid-cols-[0.9fr_1.1fr]">
+          <div className="bg-[#071b2c] p-8 text-white md:p-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
               Inquiries
             </p>
-            <h2 className="mt-4 text-5xl font-black">Start the conversation.</h2>
-            <p className="mt-6 text-white/70">
-              Tell us your dates, your style, and what kind of ocean experience
-              you’re looking for.
+            <h2
+              className={`${serif.className} mt-6 text-5xl font-medium leading-[0.95] tracking-[-0.04em] md:text-7xl`}
+            >
+              The world remains wonderfully unexplored.
+            </h2>
+            <p className="mt-8 max-w-md text-lg leading-8 text-white/65">
+              Tell us your dates, your style and the kind of ocean experience
+              you are looking for.
             </p>
           </div>
 
-          <form className="space-y-4 p-8 md:p-12" onSubmit={handleSubmit}>
+          <form className="space-y-4 p-8 md:p-14" onSubmit={handleSubmit}>
             {form.dates && (
-  <div className="rounded-2xl bg-[#12385a]/5 px-4 py-3 text-sm font-semibold text-[#12385a]">
-    Selected Expedition: {form.dates}
-  </div>
-)}
+              <div className="bg-[#12385a]/5 px-4 py-3 text-sm font-semibold text-[#12385a]">
+                Selected Expedition: {form.dates}
+              </div>
+            )}
+
             <input
               required
               placeholder="Name"
-              className="w-full rounded-2xl border px-4 py-3"
+              className="w-full border border-[#12385a]/15 bg-transparent px-4 py-4 outline-none transition placeholder:text-[#12385a]/35 focus:border-[#12385a]"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
+
             <input
-  required
-  placeholder="How many guests?"
-  className="w-full rounded-2xl border px-4 py-3"
-  value={form.guests}
-  onChange={(e) => setForm({ ...form, guests: e.target.value })}
-/>
+              required
+              placeholder="How many guests?"
+              className="w-full border border-[#12385a]/15 bg-transparent px-4 py-4 outline-none transition placeholder:text-[#12385a]/35 focus:border-[#12385a]"
+              value={form.guests}
+              onChange={(e) => setForm({ ...form, guests: e.target.value })}
+            />
+
             <input
               required
               placeholder="Preferred dates"
-              className="w-full rounded-2xl border px-4 py-3"
+              className="w-full border border-[#12385a]/15 bg-transparent px-4 py-4 outline-none transition placeholder:text-[#12385a]/35 focus:border-[#12385a]"
               value={form.dates}
               onChange={(e) => setForm({ ...form, dates: e.target.value })}
             />
+
             <textarea
-  required
-  placeholder="Tell us about your ideal expedition..."
-  className="min-h-32 w-full rounded-2xl border px-4 py-3"
-  value={form.expedition}
-  onChange={(e) => setForm({ ...form, expedition: e.target.value })}
-/>
+              required
+              placeholder="Tell us about your ideal expedition..."
+              className="min-h-36 w-full border border-[#12385a]/15 bg-transparent px-4 py-4 outline-none transition placeholder:text-[#12385a]/35 focus:border-[#12385a]"
+              value={form.expedition}
+              onChange={(e) =>
+                setForm({ ...form, expedition: e.target.value })
+              }
+            />
 
             <Button
               type="submit"
@@ -591,8 +620,8 @@ ${form.expedition}`;
         </div>
       </section>
 
-      <footer className="border-t border-[#12385a]/10 py-8">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-5 text-sm text-[#12385a]/60 md:flex-row">
+      <footer className="border-t border-[#12385a]/10 py-10">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-5 text-xs uppercase tracking-[0.2em] text-[#12385a]/45 md:flex-row">
           <p>© {new Date().getFullYear()} Kaikoa Expeditions.</p>
           <p>Move with the wind. Follow the ocean.</p>
           <p>Photography by Eduardo — Kaikoa.com</p>
@@ -603,6 +632,7 @@ ${form.expedition}`;
         href={whatsapp}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Contact Kaikoa on WhatsApp"
         className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#12385a] text-white shadow-xl transition hover:scale-105"
       >
         <MessageCircle className="h-7 w-7" />
