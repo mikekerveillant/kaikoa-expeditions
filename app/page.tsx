@@ -292,8 +292,7 @@ ${form.expedition}`;
               Eduardo’s Invitation
             </p>
             <p className="mt-8 text-lg leading-8 text-[#12385a]/65">
-              The host’s perspective gives the expedition its character:
-              personal, ocean-led and far from the packaged route.
+              The route provides direction, not a schedule. Each expedition follows the conditions: wind, swell, anchorages, lagoon clarity and the interests of those aboard. The result is a journey that feels personal, considered and connected to the ocean itself.
             </p>
           </div>
 
